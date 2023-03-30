@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tsx-event测试</title>
+  </head>
+  <body>
+    <button id="btn">测试按钮</button>
+
+    <script src="../dist/events.umd.js"></script>
+    <script>
+      var Events = window.Events;
+      if (Events) {
+        function testHandler(event) {
+          alert('您点击了按钮');
+        }
+
+        var btn = document.getElementById('btn');
+        Events.addEvent(btn, 'click', testHandler);
+        setTimeout(() => {
+          alert('按钮点击事件处理程序已经移除！');
+          Events.removeEvent(btn, 'click', testHandler);
+        }, 5000);
+      }
+    </script>
+  </body>
+</html>
